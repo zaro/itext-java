@@ -163,6 +163,10 @@
       <name>iText Repository - releases</name>
       <url>https://repo.itextsupport.com/releases</url>
     </repository>
+    <repository>
+      <id>github</id>
+      <url>https://maven.pkg.github.com/zaro/itext-java</url>
+    </repository>
   </repositories>
   <pluginRepositories>
     <pluginRepository>
