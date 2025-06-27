@@ -24,6 +24,7 @@ package com.itextpdf.kernel.pdf;
 
 import com.itextpdf.io.font.PdfEncodings;
 
+import java.util.Calendar;
 import java.util.Map;
 
 public class PdfDocumentInfo {
@@ -113,6 +114,10 @@ public class PdfDocumentInfo {
         return put(PdfName.CreationDate, new PdfDate().getPdfObject());
     }
 
+    public PdfDocumentInfo setCreationDate(Calendar d) {
+        return put(PdfName.CreationDate, new PdfDate(d).getPdfObject());
+    }
+
     /**
      * Remove creation date from the document info dictionary.
      *
@@ -125,6 +130,10 @@ public class PdfDocumentInfo {
 
     public PdfDocumentInfo addModDate() {
         return put(PdfName.ModDate, new PdfDate().getPdfObject());
+    }
+
+    public PdfDocumentInfo setModDate(Calendar d) {
+        return put(PdfName.ModDate, new PdfDate(d).getPdfObject());
     }
 
     public void setMoreInfo(Map<String, String> moreInfo) {
