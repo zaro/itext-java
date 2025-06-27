@@ -24,6 +24,7 @@ package com.itextpdf.kernel.pdf;
 
 import com.itextpdf.io.font.PdfEncodings;
 
+import java.util.Calendar;
 import java.util.Map;
 
 /**
@@ -208,6 +209,10 @@ public class PdfDocumentInfo {
         return put(PdfName.CreationDate, new PdfDate().getPdfObject());
     }
 
+    public PdfDocumentInfo setCreationDate(Calendar d) {
+        return put(PdfName.CreationDate, new PdfDate(d).getPdfObject());
+    }
+
     /**
      * Remove creation date from the document info dictionary.
      *
@@ -215,6 +220,11 @@ public class PdfDocumentInfo {
      */
     public PdfDocumentInfo removeCreationDate() {
         infoDictionary.remove(PdfName.CreationDate);
+        return this;
+    }
+
+    public PdfDocumentInfo remove(PdfName key) {
+        infoDictionary.remove(key);
         return this;
     }
 
@@ -226,6 +236,11 @@ public class PdfDocumentInfo {
     public PdfDocumentInfo addModDate() {
         return put(PdfName.ModDate, new PdfDate().getPdfObject());
     }
+
+    public PdfDocumentInfo setModDate(Calendar d) {
+        return put(PdfName.ModDate, new PdfDate(d).getPdfObject());
+    }
+
 
     /**
      * Sets custom keys and values into {@code Info} dictionary of the {@code PdfDocument}.

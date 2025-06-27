@@ -103,7 +103,7 @@ public final class FlushPdfDocumentEvent extends AbstractITextConfigurationEvent
                     oldProducer);
         }
 
-        pdfDocument.getDocumentInfo().setProducer(newProducer);
+//        pdfDocument.getDocumentInfo().setProducer(newProducer);
     }
 
     private List<ConfirmedEventWrapper> getConfirmedEvents(SequenceId sequenceId) {
