@@ -26,6 +26,6 @@ jobs:
         run: mvn -B package --file pom.xml
 
       - name: Publish to GitHub Packages Apache Maven
-        run: mvn deploy -DaltDeploymentRepository=github::https://maven.pkg.github.com/zaro/itext-java -s $GITHUB_WORKSPACE/settings.xml
+        run: mvn deploy -DdeployAtEnd=true -DaltDeploymentRepository=github::https://maven.pkg.github.com/zaro/itext-java -s $GITHUB_WORKSPACE/settings.xml
         env:
           GITHUB_TOKEN: ${{ github.token }}
