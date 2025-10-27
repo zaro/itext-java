@@ -128,6 +128,11 @@ public class PdfDocumentInfo {
         return this;
     }
 
+    public PdfDocumentInfo remove(PdfName key) {
+        infoDictionary.remove(key);
+        return this;
+    }
+
     public PdfDocumentInfo addModDate() {
         return put(PdfName.ModDate, new PdfDate().getPdfObject());
     }
