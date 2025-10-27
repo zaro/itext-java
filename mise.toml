@@ -1,0 +1,7 @@
+[tools]
+maven = "latest"
+java = "temurin-21"
+
+[tasks.update-version]
+description = "Update version in child modules, from parent"
+run = "mvn -N versions:update-child-modules"
