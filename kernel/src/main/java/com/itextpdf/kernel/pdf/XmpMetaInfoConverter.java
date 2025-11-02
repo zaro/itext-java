@@ -103,32 +103,52 @@ class XmpMetaInfoConverter {
                     continue;
                 }
                 if (PdfName.Title.equals(key)) {
-                    xmpMeta.setLocalizedText(XMPConst.NS_DC, PdfConst.Title, XMPConst.X_DEFAULT, XMPConst.X_DEFAULT, value);
+                    if(!xmpMeta.doesPropertyExist(XMPConst.NS_DC, PdfConst.Title)) {
+                        xmpMeta.setLocalizedText(XMPConst.NS_DC, PdfConst.Title, XMPConst.X_DEFAULT, XMPConst.X_DEFAULT, value);
+                    }
                 } else if (PdfName.Author.equals(key)) {
-                    for (String v : value.split(",|;")) {
-                        if (v.trim().length() > 0) {
-                            appendArrayItemIfDoesNotExist(xmpMeta, XMPConst.NS_DC, PdfConst.Creator, v.trim(), PropertyOptions.ARRAY_ORDERED);
+                    if(!xmpMeta.doesPropertyExist(XMPConst.NS_DC, PdfConst.Creator)) {
+                        for (String v : value.split(",|;")) {
+                            if (v.trim().length() > 0) {
+                                appendArrayItemIfDoesNotExist(xmpMeta, XMPConst.NS_DC, PdfConst.Creator, v.trim(), PropertyOptions.ARRAY_ORDERED);
+                            }
                         }
                     }
                 } else if (PdfName.Subject.equals(key)) {
-                    xmpMeta.setLocalizedText(XMPConst.NS_DC, PdfConst.Description, XMPConst.X_DEFAULT, XMPConst.X_DEFAULT, value);
+                    if(!xmpMeta.doesPropertyExist(XMPConst.NS_DC, PdfConst.Description)) {
+                        xmpMeta.setLocalizedText(XMPConst.NS_DC, PdfConst.Description, XMPConst.X_DEFAULT, XMPConst.X_DEFAULT, value);
+                    }
                 } else if (PdfName.Keywords.equals(key)) {
-                    for (String v : value.split(",|;")) {
-                        if (v.trim().length() > 0) {
-                            appendArrayItemIfDoesNotExist(xmpMeta, XMPConst.NS_DC, PdfConst.Subject, v.trim(), PropertyOptions.ARRAY);
+                    if(!xmpMeta.doesPropertyExist(XMPConst.NS_DC, PdfConst.Subject)) {
+                        for (String v : value.split(",|;")) {
+                            if (v.trim().length() > 0) {
+                                appendArrayItemIfDoesNotExist(xmpMeta, XMPConst.NS_DC, PdfConst.Subject, v.trim(), PropertyOptions.ARRAY);
+                            }
                         }
                     }
-                    xmpMeta.setProperty(XMPConst.NS_PDF, PdfConst.Keywords, value);
+                    if(!xmpMeta.doesPropertyExist(XMPConst.NS_PDF, PdfConst.Keywords)) {
+                        xmpMeta.setProperty(XMPConst.NS_PDF, PdfConst.Keywords, value);
+                    }
                 } else if (PdfName.Creator.equals(key)) {
-                    xmpMeta.setProperty(XMPConst.NS_XMP, PdfConst.CreatorTool, value);
+                    if(!xmpMeta.doesPropertyExist(XMPConst.NS_XMP, PdfConst.CreatorTool)) {
+                        xmpMeta.setProperty(XMPConst.NS_XMP, PdfConst.CreatorTool, value);
+                    }
                 } else if (PdfName.Producer.equals(key)) {
-                    xmpMeta.setProperty(XMPConst.NS_PDF, PdfConst.Producer, value);
+                    if(!xmpMeta.doesPropertyExist(XMPConst.NS_PDF, PdfConst.Producer)) {
+                        xmpMeta.setProperty(XMPConst.NS_PDF, PdfConst.Producer, value);
+                    }
                 } else if (PdfName.CreationDate.equals(key)) {
-                    xmpMeta.setProperty(XMPConst.NS_XMP, PdfConst.CreateDate, PdfDate.getW3CDate(value));
+                    if(!xmpMeta.doesPropertyExist(XMPConst.NS_XMP, PdfConst.CreateDate)) {
+                        xmpMeta.setProperty(XMPConst.NS_XMP, PdfConst.CreateDate, PdfDate.getW3CDate(value));
+                    }
                 } else if (PdfName.ModDate.equals(key)) {
-                    xmpMeta.setProperty(XMPConst.NS_XMP, PdfConst.ModifyDate, PdfDate.getW3CDate(value));
+                    if(!xmpMeta.doesPropertyExist(XMPConst.NS_XMP, PdfConst.ModifyDate)) {
+                        xmpMeta.setProperty(XMPConst.NS_XMP, PdfConst.ModifyDate, PdfDate.getW3CDate(value));
+                    }
                 } else if (PdfName.Trapped.equals(key)) {
-                    xmpMeta.setProperty(XMPConst.NS_PDF, PdfConst.Trapped, value);
+                    if(!xmpMeta.doesPropertyExist(XMPConst.NS_PDF, PdfConst.Trapped)) {
+                        xmpMeta.setProperty(XMPConst.NS_PDF, PdfConst.Trapped, value);
+                    }
                 }
             }
         }
