@@ -133,6 +133,11 @@ public class PdfDocumentInfo {
         return this;
     }
 
+    public PdfDocumentInfo clear() {
+        infoDictionary.clear();
+        return this;
+    }
+
     public PdfDocumentInfo addModDate() {
         return put(PdfName.ModDate, new PdfDate().getPdfObject());
     }
