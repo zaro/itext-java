@@ -4,4 +4,4 @@ java = "temurin-21"
 
 [tasks.update-version]
 description = "Update version in child modules, from parent"
-run = "mvn -N versions:update-child-modules && export V=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout) && for i in itextcore itext7core; do mvn -N versions:set -DnewVersion=${V}; done"
+run = "mvn -N versions:update-child-modules && export V=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout) && for i in itextcore itext7core; do (cd ${i} ; mvn -N versions:set -DnewVersion=${V}); done"
