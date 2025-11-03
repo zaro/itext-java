@@ -294,6 +294,10 @@ public class PdfDocument implements Closeable {
         open(writer.properties.pdfVersion);
     }
 
+    public StampingProperties getStampingProperties(){
+        return properties;
+    }
+
     /**
      * Checks if the document closing has been started or not.
      *
