@@ -294,10 +294,6 @@ public class PdfDocument implements Closeable {
         open(writer.properties.pdfVersion);
     }
 
-    public StampingProperties getStampingProperties(){
-        return properties;
-    }
-
     /**
      * Checks if the document closing has been started or not.
      *
@@ -964,7 +960,7 @@ public class PdfDocument implements Closeable {
                 }
                 if (getXmpMetadataBytes() != null) {
                     PdfStream xmp = catalog.getPdfObject().getAsStream(PdfName.Metadata);
-                    if (isAppendMode() && xmp != null && !xmp.isFlushed() && xmp.getIndirectReference() != null) {
+                    if (/*isAppendMode() &&*/ xmp != null && !xmp.isFlushed() && xmp.getIndirectReference() != null) {
                         // Use existing object for append mode
                         xmp.setData(getXmpMetadataBytes());
                         xmp.setModified();
