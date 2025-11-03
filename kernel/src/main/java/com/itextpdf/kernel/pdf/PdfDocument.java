@@ -2135,9 +2135,11 @@ public class PdfDocument implements Closeable {
                 if (reader == null) {
                     catalog = new PdfCatalog(this);
                     // initialize document info
-                    getDocumentInfo().addCreationDate();
+                    // no Auto doc info init
+                    // getDocumentInfo().addCreationDate();
                 }
-                getDocumentInfo().addModDate();
+                // no Auto moddate
+                // getDocumentInfo().addModDate();
 
                 if (trailer == null ) {
                     trailer = new PdfDictionary();
